@@ -72,6 +72,7 @@
 	var item_id = '';
 	var requestRepeater = '';
 	var numberOfLinks = 0;
+	var environment_url = '';
 	
 	function updateDisabled(disabled) {
 		if (disabled) {
@@ -106,6 +107,7 @@
 				if (element.config) {
 					if (element.config.request_repeater) {
 						requestRepeater = element.config.request_repeater;
+						environment_url = element.config.environment_url;
 						configError = false;
 					}
 					else {
@@ -168,7 +170,7 @@
 					  "url": url
 				   }
 		$.ajax({
-			url: "https://pr-croner-i-croner-i-4056.pr.fullfatthings.com/api/v2/preview/link-checker", // add a link to your own request service
+			url: "https://e50a97483326.eu.ngrok.io/api/v2/preview/link-checker", // add a link to your own request service
 			type: "GET",
 			data: data,
 			dataType: 'text',
@@ -180,6 +182,7 @@
 	}
 	
 	function showLinkResult(url,title,name,data) {
+		console.log(environment_url);
 		let response = JSON.parse(data);
 		let ok;
 		let itemCode = 'failed';
